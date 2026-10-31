@@ -27,8 +27,12 @@
   #btn:focus-visible .face { stroke: #fff; stroke-width: 6; }
 
   /* screen after tapping */
-  #welcome { display: none; min-height: 100vh; min-height: 100dvh; background: #f8dfb2; align-items: center; justify-content: center; }
-  #welcome img { width: 100%; max-width: 1100px; height: auto; display: block; }
+  #welcome { display: none; min-height: 100vh; min-height: 100dvh; background: #f8dfb2; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 14px 0; box-sizing: border-box; color: #5a3418; }
+  #pan { width: 100%; max-width: 1100px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #pan img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+  #pan.zoom img { width: 260%; cursor: zoom-out; }
+  #hint { margin: 0; font-size: 1.05rem; text-align: center; padding: 0 12px; }
+  #back { font-family: inherit; font-size: 1.1rem; color: #fff; background: #c23b08; border: 3px solid #000; border-radius: 999px; padding: 8px 26px; box-shadow: 4px 4px 0 #000; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -44,6 +48,15 @@
     <path d="M0 920 C120 900 260 880 350 920 C450 970 480 1030 500 1080 L0 1080 Z"/>
   </g>
   <circle cx="188" cy="286" r="36" fill="#f9bd27"/>
+  <circle cx="944" cy="900" r="82" fill="#f9bd27"/>
+</svg>
+
+<!-- white dots pinned to the screen corners -->
+<svg id="dots-tr" class="dots" viewBox="930 20 150 190" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g fill="#fff">
+    <ellipse cx="955" cy="48" rx="13" ry="9" transform="rotate(-35 955 48)"/>
+    <ellipse cx="1055" cy="45" rx="17" ry="11" transform="rotate(-35 1055 45)"/>
+    <ellipse cx="1005" cy="62" rx="20" ry="13" transform="rotate(-35 1005 62)"/>
     <ellipse cx="1038" cy="85" rx="15" ry="10" transform="rotate(-35 1038 85)"/>
     <ellipse cx="990" cy="118" rx="16" ry="11" transform="rotate(-35 990 118)"/>
     <ellipse cx="1035" cy="135" rx="17" ry="11" transform="rotate(-35 1035 135)"/>
@@ -91,4 +104,40 @@
 </main>
 
 <div id="welcome">
-  <a href="weaver-ant.png"><img src="weaver-ant.png" alt="Weaver Ant (Oecophylla smaragdina) infographic"></a>
+  <p id="hint">Tap the picture to zoom in</p>
+  <div id="pan"><img id="ant" src="weaver-ant.png" alt="Weaver Ant (Oecophylla smaragdina) infographic"></div>
+  <button id="back" type="button">Back</button>
+</div>
+
+<script>
+  var btn = document.getElementById("btn");
+  function go() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("bg").style.display = "none";
+    document.getElementById("dots-tr").style.display = "none";
+    document.getElementById("dots-bl").style.display = "none";
+    document.getElementById("welcome").style.display = "flex";
+    window.scrollTo(0, 0);
+  }
+  var pan = document.getElementById("pan");
+  var hint = document.getElementById("hint");
+  document.getElementById("ant").addEventListener("click", function () {
+    var z = pan.classList.toggle("zoom");
+    hint.textContent = z ? "Swipe left and right to read. Tap to zoom out" : "Tap the picture to zoom in";
+  });
+  document.getElementById("back").addEventListener("click", function () {
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("home").style.display = "";
+    document.getElementById("bg").style.display = "";
+    document.getElementById("dots-tr").style.display = "";
+    document.getElementById("dots-bl").style.display = "";
+    pan.classList.remove("zoom");
+    window.scrollTo(0, 0);
+  });
+  btn.addEventListener("click", go);
+  btn.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+  });
+</script>
+</body>
+</html>
