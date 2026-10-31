@@ -1,5 +1,108 @@
 <!DOCTYPE html>
-<html>
-<head><title>My Site</title></head>
-<body><h1>Hello world!</h1></body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jhon Nelson R. Malaluan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; min-height: 100%; background: #f9bd27; }
+  body { display: flex; align-items: center; justify-content: center; min-height: 100%; font-family: "Permanent Marker", "Comic Sans MS", cursive; }
+  svg { width: min(100vw, 100vh); height: min(100vw, 100vh); display: block; }
+  .ink { fill: #fff; stroke: #000; stroke-width: 10; stroke-linejoin: round; paint-order: stroke fill; font-family: "Permanent Marker", "Comic Sans MS", cursive; }
+  #btn { cursor: pointer; }
+  #btn:hover .face, #btn:focus .face { fill: #dc4a10; }
+  #btn:focus { outline: none; }
+  #btn:focus-visible .face { stroke: #fff; }
+  #welcome { display: none; width: 100%; }
+  #welcome img { width: 100%; height: auto; display: block; }
+</style>
+</head>
+<body>
+
+<svg id="stage" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1080" fill="#f9bd27"/>
+
+  <!-- background blobs -->
+  <g fill="#e0ac28">
+    <path d="M0 80 C90 100 160 160 120 220 C80 270 0 220 0 330 Z"/>
+    <path d="M640 0 C560 120 540 200 600 240 C700 300 800 250 940 300 C1020 330 1080 340 1080 340 L1080 0 Z"/>
+    <path d="M350 250 C380 150 470 120 430 20 L420 0 L650 0 C560 130 500 200 560 300 C620 380 520 480 540 600 C560 740 420 760 330 800 C230 850 140 830 0 780 L0 560 C100 520 200 420 280 360 C330 320 340 290 350 250 Z"/>
+    <path d="M690 700 C760 560 900 450 1080 520 L1080 1080 L760 1080 C800 930 640 830 690 700 Z"/>
+    <path d="M0 920 C120 900 260 880 350 920 C450 970 480 1030 500 1080 L0 1080 Z"/>
+  </g>
+  <circle cx="188" cy="286" r="36" fill="#f9bd27"/>
+  <circle cx="944" cy="900" r="82" fill="#f9bd27"/>
+
+  <!-- white dots, top right and bottom left -->
+  <g fill="#fff">
+    <ellipse cx="955" cy="48" rx="13" ry="9" transform="rotate(-35 955 48)"/>
+    <ellipse cx="1055" cy="45" rx="17" ry="11" transform="rotate(-35 1055 45)"/>
+    <ellipse cx="1005" cy="62" rx="20" ry="13" transform="rotate(-35 1005 62)"/>
+    <ellipse cx="1038" cy="85" rx="15" ry="10" transform="rotate(-35 1038 85)"/>
+    <ellipse cx="990" cy="118" rx="16" ry="11" transform="rotate(-35 990 118)"/>
+    <ellipse cx="1035" cy="135" rx="17" ry="11" transform="rotate(-35 1035 135)"/>
+    <ellipse cx="1075" cy="160" rx="13" ry="9" transform="rotate(-35 1075 160)"/>
+    <ellipse cx="1000" cy="185" rx="12" ry="8" transform="rotate(-35 1000 185)"/>
+    <ellipse cx="90" cy="910" rx="15" ry="10" transform="rotate(-35 90 910)"/>
+    <ellipse cx="40" cy="925" rx="17" ry="11" transform="rotate(-35 40 925)"/>
+    <ellipse cx="50" cy="965" rx="17" ry="11" transform="rotate(-35 50 965)"/>
+    <ellipse cx="90" cy="995" rx="20" ry="13" transform="rotate(-35 90 995)"/>
+    <ellipse cx="30" cy="1005" rx="17" ry="11" transform="rotate(-35 30 1005)"/>
+    <ellipse cx="55" cy="1040" rx="16" ry="10" transform="rotate(-35 55 1040)"/>
+    <ellipse cx="95" cy="1030" rx="12" ry="8" transform="rotate(-35 95 1030)"/>
+  </g>
+
+  <!-- name on an arc -->
+  <defs><path id="arc" d="M 70 480 Q 540 120 1010 480"/></defs>
+  <text class="ink" font-size="66" text-anchor="middle">
+    <textPath href="#arc" startOffset="50%">JHON NELSON R. MALALUAN</textPath>
+  </text>
+
+  <!-- section -->
+  <text class="ink" x="540" y="505" font-size="62" text-anchor="middle" style="stroke-width:9">SECTION 1B</text>
+
+  <!-- tap to continue button -->
+  <g id="btn" role="button" tabindex="0" aria-label="Tap to continue">
+    <rect x="336" y="768" width="426" height="176" rx="88" fill="#000"/>
+    <rect x="322" y="752" width="426" height="176" rx="88" fill="#000"/>
+    <rect class="face" x="338" y="768" width="394" height="144" rx="72" fill="#c23b08"/>
+    <text x="478" y="816" text-anchor="middle" font-size="52" fill="#fff" style="font-family:'Permanent Marker','Comic Sans MS',cursive">TAP TO</text>
+    <text x="478" y="878" text-anchor="middle" font-size="52" fill="#fff" style="font-family:'Permanent Marker','Comic Sans MS',cursive">CONTINUE</text>
+    <!-- sparks -->
+    <g stroke="#fff" stroke-width="7" stroke-linecap="round">
+      <line x1="620" y1="778" x2="650" y2="792"/>
+      <line x1="610" y1="818" x2="645" y2="824"/>
+      <line x1="625" y1="858" x2="645" y2="842"/>
+      <line x1="676" y1="768" x2="668" y2="796"/>
+      <line x1="712" y1="790" x2="692" y2="806"/>
+    </g>
+    <!-- cursor -->
+    <path d="M656 818 L744 862 L712 876 L738 916 L716 928 L690 888 L668 908 Z" fill="#fff" stroke="#000" stroke-width="8" stroke-linejoin="round"/>
+  </g>
+</svg>
+
+<!-- screen shown after tapping -->
+<div id="welcome">
+  <a href="weaver-ant.png"><img src="weaver-ant.png" alt="Weaver Ant (Oecophylla smaragdina) infographic"></a>
+</div>
+
+<script>
+  var stage = document.getElementById("stage");
+  var btn = document.getElementById("btn");
+  var welcome = document.getElementById("welcome");
+  function go() {
+    stage.style.display = "none";
+    welcome.style.display = "block";
+    document.body.style.alignItems = "flex-start";
+    window.scrollTo(0, 0);
+  }
+  btn.addEventListener("click", go);
+  btn.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+  });
+</script>
+</body>
 </html>
